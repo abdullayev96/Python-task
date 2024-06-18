@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <div class="page-container">
+    {% include 'userbar.html' %}
+
+    <!-- MAIN CONTENT-->
+    <div class="main-content">
+        <div class="section__content section__content--p30">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="overview-wrap">
+                            <h2 class="title-1">Add Category</h2>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Category</strong>
+                                <small> Form</small>
+                            </div>
+                            <div class="card-body card-block">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="title" class="form-control-label">Title</label>
+                                        {{ form.title }}
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="description" class="form-control-label">Description</label>
+                                        {{ form.description }}
+                                    </div>
+                                      <div class="form-group">
+                                        <label for="parent" class="form-control-label">Parent</label>
+                                        {{ form.parent }}
+                                    </div>
+                                    {% if model %}
+                                    <button type="submit" class="btn btn-warning btn-md">Save</button>
+                                    {% else %}
+                                    <button type="submit" class="btn btn-success btn-md">Add</button>
+                                    {% endif %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+</div>
+{% endblock %}
